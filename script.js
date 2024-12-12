@@ -1,30 +1,3 @@
-const backgroundMusic = document.getElementById('backgroundMusic');
-
-// Function to handle music
-function initMusic() {
-    Swal.fire({
-        title: 'Would you like music?',
-        text: "Play background music?",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, play it!',
-        cancelButtonText: 'No, thanks'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            backgroundMusic.play();
-        }
-        // Start animations regardless of music choice
-        animateGreetings();
-    });
-}
-
-// Update your window load event listener
-window.addEventListener('load', () => {
-    initMusic();
-});
-
 const container = document.querySelector('.fireworks');
 const pictureContainer = document.querySelector('.picture'); // 选择容器
 const image = document.querySelector('.image'); // 修改为选择图片
