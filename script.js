@@ -182,6 +182,11 @@ function animateGreetings() {
     });
 }
 
+// Call the animateGreetings function when the page loads
+window.addEventListener('load', () => {
+    animateGreetings();
+});
+
 // Step 2: Fireworks animation
 function startFireworks() {
     fireworks.start(); // Start fireworks
@@ -217,7 +222,7 @@ function showPictureAndCrown() {
             animateGreeting8();
             
             // 动画完成后开始SVG动画
-            // 计算总动画时间：字母数 * 每个字母延迟(0.1s) + ���画持续时间(0.5s)
+            // 计算总动画时间：字母数 * 每个字母延迟(0.1s) + 动画持续时间(0.5s)
             const text = greeting8.querySelector('h1').textContent;
             const totalDuration = (text.length * 0.1) + 0.5;
             
