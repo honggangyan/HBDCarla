@@ -1,7 +1,6 @@
 const container = document.querySelector('.fireworks');
 const pictureContainer = document.querySelector('.picture'); // 选择容器
 const image = document.querySelector('.image'); // 修改为选择图片
-const crown = document.querySelector('.crown'); // 选择皇冠图片
 const svgElements = document.querySelectorAll('.eight svg'); // 选择所有SVG元素
 const fireworks = new Fireworks(container, {
     autoresize: true,
@@ -210,7 +209,6 @@ function fadeOutFireworks() {
 function showPictureAndCrown() {
     pictureContainer.style.display = 'block';
     pictureContainer.style.opacity = '1';
-    crown.style.display = 'block';
 
     // 延迟1秒后开始greeting8动画
     setTimeout(() => {
