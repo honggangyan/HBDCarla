@@ -12,9 +12,22 @@ body {
 }
 
 /* Greetings */
-.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-5, .greeting-6, .greeting-7{
+.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-6, .greeting-7{
     position: absolute;
     top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.greeting-5{
+    position: absolute;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
