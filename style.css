@@ -159,8 +159,6 @@ body {
 
 .eight svg circle {
     shape-rendering: geometricPrecision;
-    stroke-width: 1px;
-    transform-origin: center;
 }
 
 /* Other SVG styles */
