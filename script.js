@@ -1,3 +1,30 @@
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+// Function to handle music
+function initMusic() {
+    Swal.fire({
+        title: 'Would you like music?',
+        text: "Play background music?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, play it!',
+        cancelButtonText: 'No, thanks'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            backgroundMusic.play();
+        }
+        // Start animations regardless of music choice
+        animateGreetings();
+    });
+}
+
+// Update your window load event listener
+window.addEventListener('load', () => {
+    initMusic();
+});
+
 const container = document.querySelector('.fireworks');
 const pictureContainer = document.querySelector('.picture'); // 选择容器
 const image = document.querySelector('.image'); // 修改为选择图片
@@ -182,11 +209,6 @@ function animateGreetings() {
     });
 }
 
-// Call the animateGreetings function when the page loads
-window.addEventListener('load', () => {
-    animateGreetings();
-});
-
 // Step 2: Fireworks animation
 function startFireworks() {
     fireworks.start(); // Start fireworks
@@ -222,7 +244,7 @@ function showPictureAndCrown() {
             animateGreeting8();
             
             // 动画完成后开始SVG动画
-            // 计算总动画时间：字母数 * 每个字母延迟(0.1s) + 动画持续时间(0.5s)
+            // 计算总动画时间：字母数 * 每个字母延迟(0.1s) + ���画持续时间(0.5s)
             const text = greeting8.querySelector('h1').textContent;
             const totalDuration = (text.length * 0.1) + 0.5;
             
