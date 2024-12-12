@@ -263,24 +263,21 @@ function animateGreeting8() {
 
 // Step 5: Animate SVG elements
 function animateSVGElements() {
-    gsap.set(svgElements, { visibility: "hidden", opacity: 1 }); // Set initial state
+    gsap.set(svgElements, { visibility: "hidden", opacity: 1 });
 
     gsap.to(svgElements, {
         visibility: "visible",
-        scale: 80,            // Scale the elements to 100
-        opacity: 0,            // Final opacity should be 0
-        stagger: 0.3,          // Stagger the appearance of SVG elements
-        duration: 2,         // Duration of the animation
-        repeat: 5,             // Repeat 5 times
-        repeatDelay: 0.5,      // Delay between repeats
+        scale: 60,            // 降低最大缩放值
+        opacity: 0,
+        stagger: 0.3,
+        duration: 2.5,        // 增加动画持续时间
+        repeat: 5,
+        repeatDelay: 0.5,
+        ease: "power2.out",   // 添加缓动效果
         onUpdate: function() {
-            // Calculate the current scale value
             const currentScale = this.target.style.transform.split('(')[1].split(')')[0].replace('scale(', '');
             const scaleValue = parseFloat(currentScale);
-            // Adjust opacity as scale increases (opacity decreases as scale increases)
-            const newOpacity = Math.max(1 - (scaleValue / 80), 0); // Opacity decreases from 1 to 0 as scale goes from 0 to 100
-
-            // Apply the updated opacity to the element
+            const newOpacity = Math.max(1 - (scaleValue / 60), 0);
             gsap.set(this.target, { opacity: newOpacity });
         }
     });

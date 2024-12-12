@@ -150,6 +150,17 @@ body {
     visibility: hidden; /* Initially hidden */
     width: 25px;
     z-index: 1; /* Lower z-index for SVGs */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.eight svg circle {
+    shape-rendering: geometricPrecision;
+    stroke-width: 1px;
+    transform-origin: center;
 }
 
 /* Other SVG styles */
