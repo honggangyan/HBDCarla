@@ -1,0 +1,334 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Greetings */
+.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-5, .greeting-6, .greeting-7{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.greeting-8 {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.angel-image {
+    width: 100px;  /* 调整图片大小 */
+    height: auto;
+    margin-left: 10px;  /* 调整图片位置 */
+    vertical-align: middle;
+}
+
+.greeting-1 h1, .greeting-2 h1, .greeting-3 h1, .greeting-4 h1, .greeting-5 h1, .greeting-6 h1, .greeting-7 h1, .greeting-8 h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* 设置容器宽度 */
+    height: 100vh; /* 设置容器高度 */
+    pointer-events: none; /* 禁用鼠标事件 */
+    transition: opacity 1s ease; /* 添加过渡效果 */
+}
+.hidden {
+    display: none; /* 隐藏的样式 */
+}
+.picture {
+    position: fixed; /* 使用fixed定位 */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* 默认宽度 */
+    height: auto; /* 自适应高度 */
+    display: none; /* 初始隐藏 */
+    opacity: 0; /* 初始透明度 */
+    animation: bounce 1s forwards; /* 添加动画 */
+    justify-content: center;
+    z-index: 10; /* Ensure picture is in front */
+}
+.image {
+    width: 100%; /* 图片宽度自适应容器 */
+    height: auto; /* 自适应高度 */
+    position: relative; /* 使子元素相对定位 */
+}
+.crown {
+    position: absolute; /* 绝对定位 */
+    top: 0px; /* 距离顶部10px */
+    left: 10px; /* 距离左侧10px */
+    width: 150px; /* 设置皇冠宽度为200px */
+    height: auto; /* 自适应高度 */
+    display: none; /* 初始隐藏 */
+    z-index: 10; /* Ensure crown is in front */
+}
+
+/* 媒体查询 */
+@media (min-width: 600px) {
+    .picture {
+        max-height: 50vh;
+        width: auto;
+    }
+    .image {
+        max-height: 50vh;
+        width: auto;
+    }
+}
+
+/* 蹦跳动画 */
+@keyframes bounce {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5); /* 初始缩小 */
+        opacity: 0; /* 初始透明度 */
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1); /* 放大 */
+        opacity: 1; /* 透明度渐变 */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1); /* 恢复原始大小 */
+        opacity: 1; /* 最终透明度 */
+    }
+} 
+
+.baloons img {
+    display: inline-block;
+    position: absolute;
+}
+
+.baloons img:nth-child(even) {
+    left: -10%;
+}
+
+.baloons img:nth-child(odd) {
+    right: -10%;
+}
+
+.baloons img:nth-child(3n + 0) {
+    left: 30%;
+}
+
+.eight {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+.eight svg {
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden; /* Initially hidden */
+    width: 25px;
+    z-index: 1; /* Lower z-index for SVGs */
+}
+
+/* Other SVG styles */
+.eight svg:nth-child(1) {
+    fill: #bd6ecf;
+    left: 5vw;
+    top: 7vh;
+}
+
+.eight svg:nth-child(2) {
+    fill: #7dd175;
+    left: 35vw;
+    top: 23vh;
+}
+
+.eight svg:nth-child(3) {
+    fill: #349d8b;
+    left: 23vw;
+    top: 33vh;
+}
+
+.eight svg:nth-child(4) {
+    fill: #347a9d;
+    left: 57vw;
+    top: 43vh;
+}
+
+.eight svg:nth-child(5) {
+    fill: #c66053;
+    left: 7vw;
+    top: 68vh;
+}
+
+.eight svg:nth-child(6) {
+    fill: #bfaa40;
+    left: 77vw;
+    top: 42vh;
+}
+
+.eight svg:nth-child(7) {
+    fill: #e3bae8;
+    left: 83vw;
+    top: 68vh;
+}
+
+.eight svg:nth-child(8) {
+    fill: #8762cb;
+    left: 37vw;
+    top: 86vh;
+}
+
+.eight svg:nth-child(9) {
+    fill: #9a90da;
+    left: 87vw;
+    top: 94vh;
+}
+
+/* Add shake animation keyframes */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Style for the shaking text */
+.shake {
+    display: inline-block;
+    animation: shake 1s ease infinite;
+    animation-delay: 0.2s; /* Start shaking after appearing */
+}
+
+/* Adjust greeting-3 styles if needed */
+.greeting-3 h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0;
+}
+
+/* Add shake animation keyframes for rotated emoji */
+@keyframes shakeRotated {
+    0%, 100% { 
+        transform: rotate(90deg) translateX(0); 
+    }
+    10%, 30%, 50%, 70%, 90% { 
+        transform: rotate(90deg) translateX(-5px);
+    }
+    20%, 40%, 60%, 80% { 
+        transform: rotate(90deg) translateX(5px);
+    }
+}
+
+/* Style for the emoji */
+#emoji {
+    display: inline-block;
+    font-size: 1.5em;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #696eff;
+    transform: rotate(90deg);
+    margin-left: 5px;
+    animation: shakeRotated 1s ease infinite;
+    animation-delay: 0.2s;
+}
+
+/* Update greeting-3 styles to accommodate the rotated emoji */
+.greeting-3 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    line-height: 1.4;
+}
+
+.angel {
+    color: #ff69b4;
+}
+
+.blessing {
+    background-color: #696eff; /* Same blue as emoji */
+    color: white;
+    padding: 0 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* 为了确保在不同屏幕尺寸下都能正确显示，添加媒体查询 */
+@media (max-height: 700px) {
+    .greeting-8 {
+        top: 85%; /* 在较小的屏幕上调整位置 */
+    }
+}
+
+@media (max-width: 450px) {
+    .greeting-8 {
+        top: 75%; /* 在较小的屏幕上调整位置 */
+    }
+}
+
+.greeting-8 h1 {
+    display: inline-block;
+}
+
+.greeting-8 h1 span {
+    display: inline-block;
+    opacity: 1;
+    color: #000000;
+    transition: color 0.3s ease; /* 添加颜色过渡效果 */
+}
+
+/* 优化下落动画 */
+@keyframes dropLetter {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(10px) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 优化颜色变换动画 */
+@keyframes colorChange {
+    0% {
+        color: #000000;
+    }
+    50% {
+        color: #ee82e0; /* 过渡色 */
+    }
+    100% {
+        color: #e21273;
+    }
+}
