@@ -269,7 +269,7 @@ function animateSVGElements() {
         visibility: "visible",
         scale: 120,            // Scale the elements to 100
         opacity: 0,            // Final opacity should be 0
-        stagger: 0.3,          // Stagger the appearance of SVG elements
+        stagger: 0.5,          // Stagger the appearance of SVG elements
         duration: 2.5,         // Duration of the animation
         repeat: 5,             // Repeat 5 times
         repeatDelay: 0.5,      // Delay between repeats
