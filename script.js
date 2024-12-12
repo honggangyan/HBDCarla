@@ -267,7 +267,7 @@ function animateSVGElements() {
 
     gsap.to(svgElements, {
         visibility: "visible",
-        scale: 50,            // Scale the elements to 100
+        scale: 30,            // Scale the elements to 100
         opacity: 0,            // Final opacity should be 0
         stagger: 0.3,          // Stagger the appearance of SVG elements
         duration: 2,         // Duration of the animation
@@ -278,7 +278,7 @@ function animateSVGElements() {
             const currentScale = this.target.style.transform.split('(')[1].split(')')[0].replace('scale(', '');
             const scaleValue = parseFloat(currentScale);
             // Adjust opacity as scale increases (opacity decreases as scale increases)
-            const newOpacity = Math.max(1 - (scaleValue / 40), 0); // Opacity decreases from 1 to 0 as scale goes from 0 to 100
+            const newOpacity = Math.max(1 - (scaleValue / 30), 0); // Opacity decreases from 1 to 0 as scale goes from 0 to 100
 
             // Apply the updated opacity to the element
             gsap.set(this.target, { opacity: newOpacity });
