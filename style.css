@@ -298,7 +298,7 @@ body {
 
 @media (max-width: 450px) {
     .greeting-8 {
-        top: 75%; /* 在较小的屏幕上调整位置 */
+        top: 70%; /* 在较小的屏幕上调整位置 */
     }
 }
 
