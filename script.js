@@ -195,7 +195,7 @@ function animateGreetings() {
         duration: 0.2,
         ease: "power1.inOut",
         yoyo: true, // 反向播放
-        repeat: 3 // 重复5次
+        repeat: 3 // 重复3次
     })
     .to('.greeting-7 .mouth', {
         rotation: 180, // 反转180度
@@ -206,7 +206,7 @@ function animateGreetings() {
         opacity: 0,
         y: -50,
         duration: 1,
-        delay: 3  // 显示3秒后消失
+        delay: 1  // 显示2秒后消失（原来是3秒）
     })
 
     // Greeting 8
