@@ -12,7 +12,7 @@ body {
 }
 
 /* Greetings */
-.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-5, .greeting-6, .greeting-7, .greeting-8, .greeting-9, .greeting-10, .greeting-11 {
+.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-5, .greeting-6, .greeting-8, .greeting-9, .greeting-10, .greeting-11 {
     position: absolute;
     top: 40%;
     left: 50%;
