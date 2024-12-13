@@ -170,13 +170,13 @@ function animateGreetings() {
     .to('.greeting-7 h1', {
         opacity: 1,
         y: 0,
-        duration: 1
+        duration: 1.5
     })
     .to('.greeting-7 .second-line', {
         opacity: 1,
         y: 0,
         duration: 0.5,
-        delay: 0
+        delay: 0.5
     })
     .to('.greeting-7 .emoji', {
         rotation: 90,
@@ -239,13 +239,13 @@ function animateGreetings() {
     .to(greeting10, {
         opacity: 1,
         y: 0,
-        duration: 1
+        duration: 1.5
     })
     .to(greeting10, {
         opacity: 0,
         y: -50,
-        duration: 1.5,
-        delay: 1.5,
+        duration: 1,
+        delay: 0.5,
         onComplete: () => {
             // Add a delay before showing picture and crown
             setTimeout(() => {
