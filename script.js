@@ -77,9 +77,13 @@ function animateGreetings() {
     const greeting5 = document.querySelector('.greeting-5');
     const greeting6 = document.querySelector('.greeting-6');
     const greeting7 = document.querySelector('.greeting-7');
+    const greeting8 = document.querySelector('.greeting-8');
+    const greeting9 = document.querySelector('.greeting-9');
+    const greeting10 = document.querySelector('.greeting-10');
+    const greeting11 = document.querySelector('.greeting-11');
 
     // Set initial state for all greetings
-    gsap.set([greeting1, greeting2, greeting3, greeting4, greeting5, greeting6, greeting7], { opacity: 0, y: 50 });
+    gsap.set([greeting1, greeting2, greeting3, greeting4, greeting5, greeting6, greeting7, greeting8, greeting9, greeting10, greeting11], { opacity: 0, y: 50 });
 
     // Create a sequence of animations
     const sequence = gsap.timeline();
@@ -120,7 +124,7 @@ function animateGreetings() {
         opacity: 0,
         y: -50,
         duration: 1.5,
-        delay: 3
+        delay: 4
     })
 
     // Greeting 4
@@ -146,28 +150,84 @@ function animateGreetings() {
         opacity: 0,
         y: -50,
         duration: 1,
-        delay: 3
+        delay: 3,
+        onComplete: () => {
+            // 在 greeting-5 结束后直接开始 greeting-6 动画
+            animateGreeting6().then(() => {
+                // 当animateGreeting6完成后，继续执行序列
+                sequence.resume();
+            });
+        }
     })
+    .addPause() // 暂停序列，等待animateGreeting6完成
 
-    // Greeting 6
-    .to(greeting6, {
+    // Greeting 7
+    .to(greeting7, {
+        opacity: 1,
+        duration: 1  // 先让整个容器显示
+    })
+    .to('.greeting-7 h1', {
         opacity: 1,
         y: 0,
         duration: 1
     })
-    .to(greeting6, {
+    .to('.greeting-7 .second-line', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.5
+    })
+    
+    .to('.greeting-7 .emoji', {
+        rotation: 90,
+        duration: 0.5
+    })
+    .to('.greeting-7 .mouth', {
+        rotation: 180, // 反转180度
+        duration: 0.5,
+        delay: 0.5 // 在emoji反转后延迟执行
+    })
+
+    .to(greeting7, {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        delay: 3  // 显示3秒后消失
+    })
+
+    // Greeting 8
+    .to(greeting8, {
+        opacity: 1,
+        y: 0,
+        duration: 1
+    })
+    .to(greeting8, {
         opacity: 0,
         y: -50,
         duration: 1,
         delay: 3
     })
-    // Add Greeting 7 (final greeting)
-    .to(greeting7, {
+
+    // Greeting 9
+    .to(greeting9, {
         opacity: 1,
         y: 0,
         duration: 1
     })
-    .to(greeting7, {
+    .to(greeting9, {
+        opacity: 0,
+        y: -50,
+        duration: 1.5,
+        delay: 3
+    })
+
+    // Greeting 10
+    .to(greeting10, {
+        opacity: 1,
+        y: 0,
+        duration: 1
+    })
+    .to(greeting10, {
         opacity: 0,
         y: -50,
         duration: 1.5,
@@ -210,18 +270,18 @@ function showPictureAndCrown() {
     pictureContainer.style.display = 'block';
     pictureContainer.style.opacity = '1';
 
-    // 延迟1秒后开始greeting8动画
+    // 延迟1秒后开始greeting11动画
     setTimeout(() => {
-        const greeting8 = document.querySelector('.greeting-8');
-        if (greeting8) {
+        const greeting11 = document.querySelector('.greeting-11');
+        if (greeting11) {
             // 设置初始可见性
-            greeting8.style.opacity = '1';
+            greeting11.style.opacity = '1';
             // 调用字母下落动画
-            animateGreeting8();
+            animateGreeting11();
             
             // 动画完成后开始SVG动画
             // 计算总动画时间：字母数 * 每个字母延迟(0.1s) + 动画持续时间(0.5s)
-            const text = greeting8.querySelector('h1').textContent;
+            const text = greeting11.querySelector('h1').textContent;
             const totalDuration = (text.length * 0.1) + 0.5;
             
             setTimeout(() => {
@@ -231,10 +291,10 @@ function showPictureAndCrown() {
     }, 1000);
 }
 
-function animateGreeting8() {
-    const greeting8 = document.querySelector('.greeting-8 h1');
+function animateGreeting11() {
+    const greeting11 = document.querySelector('.greeting-11 h1');
     const text = "Happy Birthday!!!";
-    greeting8.textContent = '';
+    greeting11.textContent = '';
     
     [...text].forEach((letter, index) => {
         const span = document.createElement('span');
@@ -255,7 +315,7 @@ function animateGreeting8() {
             // 初始只添加下落动画
             span.style.animation = `dropLetter 0.5s ${index * 0.1}s forwards`;
         }
-        greeting8.appendChild(span);
+        greeting11.appendChild(span);
     });
 }
 
@@ -284,3 +344,96 @@ function animateSVGElements() {
     });
 }
 
+function animateGreeting6() {
+    const greeting6 = document.querySelector('.greeting-6');
+    const h1 = greeting6.querySelector('h1');
+    const originalText = h1.childNodes[0].textContent.trim();
+    const bibleVerse = greeting6.querySelector('.bible-verse');
+    const bibleText = bibleVerse.textContent;
+    
+    // 清空 h1 内容
+    h1.innerHTML = '';
+    
+    return new Promise((resolve) => {
+        // 将文本按单词分割
+        const mainWords = originalText.split(/(\s+)/);
+        const bibleWords = bibleText.split(/(\s+)/);
+        let delay = 0;
+        
+        // 处理主文本
+        mainWords.forEach(word => {
+            if (word.trim() === '') {
+                // 处理空格
+                const spaceSpan = document.createElement('span');
+                spaceSpan.innerHTML = '&nbsp;';
+                h1.appendChild(spaceSpan);
+            } else {
+                // 为每个单词创建一个容器
+                const wordContainer = document.createElement('span');
+                wordContainer.style.display = 'inline-block'; // 确保单词不会断开
+                wordContainer.style.whiteSpace = 'nowrap'; // 防止单词内部换行
+                
+                // 为单词中的每个字母创建动画
+                [...word].forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.style.opacity = '0';
+                    span.style.animation = `fadeInLetter 0.02s ${delay}s forwards`;
+                    wordContainer.appendChild(span);
+                    delay += 0.05;
+                });
+                
+                h1.appendChild(wordContainer);
+            }
+        });
+        
+        // 添加换行
+        const br = document.createElement('br');
+        h1.appendChild(br);
+        
+        // 创建 bible-verse 容器
+        const bibleContainer = document.createElement('span');
+        bibleContainer.className = 'bible-verse';
+        
+        // 处理经文文本
+        bibleWords.forEach((word, wordIndex) => {
+            if (word.trim() === '') {
+                // 处理空格
+                const spaceSpan = document.createElement('span');
+                spaceSpan.innerHTML = '&nbsp;';
+                bibleContainer.appendChild(spaceSpan);
+            } else {
+                // 为每个单词创建一个容器
+                const wordContainer = document.createElement('span');
+                wordContainer.style.display = 'inline-block';
+                wordContainer.style.whiteSpace = 'nowrap';
+                
+                // 为单词中的每个字母创建动画
+                [...word].forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.style.opacity = '0';
+                    span.style.animation = `fadeInLetter 0.02s ${delay}s forwards`;
+                    
+                    // 为后一个字符添加结束事件
+                    if (wordIndex === bibleWords.length - 1 && index === word.length - 1) {
+                        span.addEventListener('animationend', () => {
+                            setTimeout(() => {
+                                greeting6.style.animation = 'fadeOut 1s forwards';
+                                setTimeout(resolve, 1000);
+                            }, 3000);
+                        });
+                    }
+                    
+                    wordContainer.appendChild(span);
+                    delay += 0.05;
+                });
+                
+                bibleContainer.appendChild(wordContainer);
+            }
+        });
+        
+        h1.appendChild(bibleContainer);
+        greeting6.style.opacity = '1';
+    });
+}

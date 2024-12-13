@@ -12,7 +12,7 @@ body {
 }
 
 /* Greetings */
-.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-6, .greeting-7{
+.greeting-1, .greeting-2, .greeting-3, .greeting-4, .greeting-5, .greeting-6, .greeting-7, .greeting-8, .greeting-9, .greeting-10, .greeting-11 {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -25,30 +25,8 @@ body {
     padding: 0 20px;
 }
 
-.greeting-5{
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    opacity: 0;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.greeting-8 {
-    position: absolute;
+.greeting-11 {
     top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    opacity: 0;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
 }
 
 .angel-image {
@@ -58,10 +36,43 @@ body {
     vertical-align: middle;
 }
 
-.greeting-1 h1, .greeting-2 h1, .greeting-3 h1, .greeting-4 h1, .greeting-5 h1, .greeting-6 h1, .greeting-7 h1, .greeting-8 h1 {
+.greeting-1 h1, .greeting-2 h1, .greeting-3 h1, .greeting-4 h1, .greeting-5 h1, .greeting-7 h1, .greeting-8 h1, .greeting-9 h1, .greeting-10 h1, .greeting-11 h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin: 0;
     line-height: 1.4;
+}
+
+.greeting-6 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    box-sizing: border-box; /* 确保padding不会增加总宽度 */
+}
+
+.greeting-6 h1 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+    padding: 0 15px;
+    white-space: normal;
+    word-break: normal;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+}
+
+.greeting-6 h1 span {
+    display: inline-block; /* 让每个字母都能正确显示动画 */
 }
 
 .fireworks {
@@ -304,22 +315,22 @@ body {
 
 /* 为了确保在不同屏幕尺寸下都能正确显示，添加媒体查询 */
 @media (max-height: 700px) {
-    .greeting-8 {
+    .greeting-11 {
         top: 85%; /* 在较小的屏幕上调整位置 */
     }
 }
 
 @media (max-width: 450px) {
-    .greeting-8 {
+    .greeting-11 {
         top: 70%; /* 在较小的屏幕上调整位置 */
     }
 }
 
-.greeting-8 h1 {
+.greeting-11 h1 {
     display: inline-block;
 }
 
-.greeting-8 h1 span {
+.greeting-11 h1 span {
     display: inline-block;
     opacity: 1;
     color: #000000;
@@ -347,10 +358,80 @@ body {
     0% {
         color: #000000;
     }
-    50% {
-        color: #ee82e0; /* 过渡色 */
+    20% {
+        color: #e9bad7;
+    }
+    40% {
+        color: #f380cb;
     }
     100% {
         color: #ff69b4;
     }
+}
+
+.bible-verse {
+    font-style: italic;
+    color: #696666;
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    line-height: 1.6;
+    margin-top: 0.2em; /* 控制与主文本的间距 */
+    display: inline-block;
+    width: 100%;
+}
+
+@keyframes fadeInLetter {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+    }
+}
+
+.greeting-7 .second-line {
+    opacity: 0;
+}
+
+.greeting-7 .emoji {
+    display: inline-block;
+    transform-origin: center;
+}
+
+@keyframes rotateMouth {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(180deg); 
+    }
+}
+
+.greeting-7 .mouth {
+    display: inline-block;
+    animation: rotateMouth 0.5s forwards; /* 添加动画 */
+}
+
+.greeting-7 {
+    position: absolute; /* 使用绝对定位 */
+    top: 30%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 通过平移实现完全居中 */
+    text-align: center; /* 文本居中 */
+    z-index: 10; /* 确保在其他元素之上 */
+    opacity: 0; /* 初始透明度为0，待动画显示 */
+    width: 100%; /* 宽度100% */
+    max-width: 800px; /* 最大宽度限制 */
+    padding: 0 20px; /* 内边距 */
 }
