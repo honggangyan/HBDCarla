@@ -433,7 +433,7 @@ body {
 
 .greeting-7 {
     position: absolute; /* 使用绝对定位 */
-    top: 30%; /* 垂直居中 */
+    top: 35%; /* 垂直居中 */
     left: 50%; /* 水平居中 */
     transform: translate(-50%, -50%); /* 通过平移实现完全居中 */
     text-align: center; /* 文本居中 */

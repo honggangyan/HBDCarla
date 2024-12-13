@@ -250,7 +250,7 @@ function animateGreetings() {
             // Add a delay before showing picture and crown
             setTimeout(() => {
                 showPictureAndCrown();
-            }, 1200); // Wait 2 seconds after the last greeting fades out
+            }, 500); // Wait  seconds after the last greeting fades out
         }
     });
 }
