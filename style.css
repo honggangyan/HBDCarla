@@ -407,6 +407,7 @@ body {
 .greeting-7 .emoji {
     display: inline-block;
     transform-origin: center;
+    margin-top: 20px; /* 添加上边距以增加与上方文本的间距 */
 }
 
 @keyframes rotateMouth {
@@ -434,4 +435,9 @@ body {
     width: 100%; /* 宽度100% */
     max-width: 800px; /* 最大宽度限制 */
     padding: 0 20px; /* 内边距 */
+}
+
+.greeting-7 .second-line h2 {
+    font-size: clamp(1.2rem, 3vw, 2rem); /* 设置副标题的字体大小 */
+    margin: 0; /* 去掉默认的外边距 */
 }

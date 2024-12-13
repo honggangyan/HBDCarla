@@ -56,20 +56,17 @@ const fireworks = new Fireworks(container, {
 const balloons = document.querySelectorAll('.baloons img');
 gsap.set(balloons, { y: 1400, opacity: 0.9 }); // Set initial position and opacity
 
-// Step 1: Animate balloons
-gsap.to(balloons, {
-    opacity: 1,
-    y: -2000,
-    stagger: 0.2,
-    duration: 3,
-    ease: "power1.inOut",
-    onComplete: () => {
-        // After balloons, start fireworks
-        startFireworks();
-    }
-});
 // Function to animate greetings
 function animateGreetings() {
+    // Step 1: Animate balloons
+    gsap.to(balloons, {
+        opacity: 1,
+        y: -2000,
+        stagger: 0.2,
+        duration: 3,
+        ease: "power1.inOut",
+    });
+
     const greeting1 = document.querySelector('.greeting-1');
     const greeting2 = document.querySelector('.greeting-2');
     const greeting3 = document.querySelector('.greeting-3');
@@ -119,6 +116,10 @@ function animateGreetings() {
         opacity: 1,
         y: 0,
         duration: 1
+    })
+    .add(() => {
+        // 在 greeting-3 动画进行时启动烟花
+        startFireworks();
     })
     .to(greeting3, {
         opacity: 0,
@@ -174,20 +175,33 @@ function animateGreetings() {
     .to('.greeting-7 .second-line', {
         opacity: 1,
         y: 0,
-        duration: 1,
-        delay: 0.5
+        duration: 0.5,
+        delay: 0
     })
-    
     .to('.greeting-7 .emoji', {
         rotation: 90,
         duration: 0.5
+    })
+    .to('.greeting-7 .emoji', {
+        scale: 3, // 放大3倍
+        duration: 0.4,
+        ease: "power1.inOut", // 添加缓动效果
+        delay: 0.5, // 在emoji反转后延迟执行
+        yoyo: false, // 不反向播放
+        repeat: 0 // 不重复
+    })
+    .to('.greeting-7 .emoji', {
+        x: 10, // 向右移动10px
+        duration: 0.2,
+        ease: "power1.inOut",
+        yoyo: true, // 反向播放
+        repeat: 3 // 重复5次
     })
     .to('.greeting-7 .mouth', {
         rotation: 180, // 反转180度
         duration: 0.5,
         delay: 0.5 // 在emoji反转后延迟执行
     })
-
     .to(greeting7, {
         opacity: 0,
         y: -50,
@@ -243,7 +257,6 @@ function animateGreetings() {
 
 // Call the animateGreetings function when the page loads
 window.addEventListener('load', () => {
-    animateGreetings();
     Swal.fire({
         title: 'play music?',
         icon: 'warning',
@@ -253,10 +266,15 @@ window.addEventListener('load', () => {
         confirmButtonText: 'Yes',
         cancelButtonText: 'No',
     }).then((result) => {
+        const music = document.getElementById('background-music');
         if (result.isConfirmed) {
-            const music = document.getElementById('background-music');
             music.play(); // 播放音乐
         }
+        
+        // 等待1秒后再开始动画
+        setTimeout(() => {
+            animateGreetings(); // 询问后再开始动画
+        }, 1000); // 等待1秒
     });
 });
 
@@ -385,7 +403,7 @@ function animateGreeting6() {
                 // 为每个单词创建一个容器
                 const wordContainer = document.createElement('span');
                 wordContainer.style.display = 'inline-block'; // 确保单词不会断开
-                wordContainer.style.whiteSpace = 'nowrap'; // 防止单词内部换行
+                wordContainer.style.whiteSpace = 'nowrap'; // 防止单内部断行
                 
                 // 为单词中的每个字母创建动画
                 [...word].forEach((char, index) => {
