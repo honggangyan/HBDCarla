@@ -245,7 +245,7 @@ function animateGreetings() {
         opacity: 0,
         y: -50,
         duration: 1.5,
-        delay: 3,
+        delay: 1.5,
         onComplete: () => {
             // Add a delay before showing picture and crown
             setTimeout(() => {
