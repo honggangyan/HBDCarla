@@ -244,6 +244,20 @@ function animateGreetings() {
 // Call the animateGreetings function when the page loads
 window.addEventListener('load', () => {
     animateGreetings();
+    Swal.fire({
+        title: 'play music?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const music = document.getElementById('background-music');
+            music.play(); // 播放音乐
+        }
+    });
 });
 
 // Step 2: Fireworks animation
@@ -437,3 +451,4 @@ function animateGreeting6() {
         greeting6.style.opacity = '1';
     });
 }
+
