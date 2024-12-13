@@ -26,7 +26,7 @@ body {
 }
 
 .greeting-5 {
-    top: 40%;
+    top: 35%;
 }
 
 .greeting-11 {
@@ -406,13 +406,13 @@ body {
 
 .greeting-7 .second-line {
     opacity: 0;
-    margin-top: 20px; /* 增加与 h1 之间的间距 */
+    margin-top: 50px; /* 增加与 h1 之间的间距 */
 }
 
 .greeting-7 .emoji {
     display: inline-block;
     transform-origin: center;
-    margin-top: 40px; /* 保持与上方文本的间距 */
+    margin-top: 50px; /* 保持与上方文本的间距 */
 }
 
 @keyframes rotateMouth {
