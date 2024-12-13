@@ -402,12 +402,13 @@ body {
 
 .greeting-7 .second-line {
     opacity: 0;
+    margin-bottom: 30px; /* 增加与 emoji 之间的间距 */
 }
 
 .greeting-7 .emoji {
     display: inline-block;
     transform-origin: center;
-    margin-top: 20px; /* 添加上边距以增加与上方文本的间距 */
+    margin-top: 20px; /* 保持与上方文本的间距 */
 }
 
 @keyframes rotateMouth {
