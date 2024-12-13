@@ -21,9 +21,10 @@ body {
     z-index: 10;
     opacity: 0;
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
     padding: 0 20px;
 }
+
 
 .greeting-5 {
     top: 35%;
@@ -108,6 +109,7 @@ body {
     width: 100%; /* 图片宽度自适应容器 */
     height: auto; /* 自适应高度 */
     position: relative; /* 使子元素相对定位 */
+    border-radius: 20px; /* 添加圆角，您可以根据需要调整这个值 */
 }
 .crown {
     position: absolute; /* 绝对定位 */
