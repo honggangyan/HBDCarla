@@ -205,8 +205,8 @@ function animateGreetings() {
     .to(greeting7, {
         opacity: 0,
         y: -50,
-        duration: 1,
-        delay: 1  // 显示2秒后消失（原来是3秒）
+        duration: 1.5,
+        delay: 1.5  // 显示2秒后消失（原来是3秒）
     })
 
     // Greeting 8
@@ -218,7 +218,7 @@ function animateGreetings() {
     .to(greeting8, {
         opacity: 0,
         y: -50,
-        duration: 1,
+        duration: 1.5,
         delay: 3
     })
 
